@@ -13,12 +13,24 @@
 
         body {
             font-family: 'Clear Sans', 'Helvetica Neue', Arial, sans-serif;
-            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
             display: flex;
             flex-direction: column;
             align-items: center;
             min-height: 100vh;
             padding: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .theme-dark {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+        }
+
+        .theme-light {
+            background: linear-gradient(135deg, #faf8ef 0%, #f2e8cf 50%, #ede0c8 100%);
+        }
+
+        .theme-pink {
+            background: linear-gradient(135deg, #fff0f5 0%, #ffe4e9 50%, #ffcdd2 100%);
         }
 
         .container {
@@ -36,62 +48,137 @@
         .title {
             font-size: 60px;
             font-weight: bold;
+            transition: all 0.3s ease;
+        }
+
+        .theme-dark .title {
             background: linear-gradient(135deg, #ff6b6b, #feca57, #48dbfb, #ff9ff3);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            text-shadow: 0 0 30px rgba(255, 107, 107, 0.5);
+        }
+
+        .theme-light .title {
+            background: linear-gradient(135deg, #776e65, #9f9089, #bbb0a8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .theme-pink .title {
+            background: linear-gradient(135deg, #ff69b4, #ff1493, #db7093);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
 
         .score-container {
             display: flex;
             gap: 10px;
+            align-items: center;
         }
 
         .score-box {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
             padding: 10px 20px;
             border-radius: 12px;
             text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .theme-dark .score-box {
+            background: rgba(255, 255, 255, 0.1);
             border: 1px solid rgba(255, 255, 255, 0.2);
             box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
         }
 
+        .theme-light .score-box {
+            background: #bbada0;
+            border: 1px solid #a39489;
+        }
+
+        .theme-pink .score-box {
+            background: #ffb6c1;
+            border: 1px solid #ff69b4;
+        }
+
         .score-label {
             font-size: 12px;
-            color: rgba(255, 255, 255, 0.6);
             text-transform: uppercase;
             font-weight: bold;
+            transition: color 0.3s ease;
         }
+
+        .theme-dark .score-label { color: rgba(255, 255, 255, 0.6); }
+        .theme-light .score-label { color: #eee4da; }
+        .theme-pink .score-label { color: #fff0f5; }
 
         .score-value {
             font-size: 24px;
             font-weight: bold;
-            color: #fff;
+            transition: color 0.3s ease;
         }
 
-        .new-game-btn {
-            background: linear-gradient(135deg, #ff6b6b, #ff9ff3);
-            color: #fff;
-            border: none;
-            padding: 12px 24px;
-            border-radius: 12px;
-            font-size: 16px;
+        .theme-dark .score-value { color: #fff; }
+        .theme-light .score-value { color: #fff; }
+        .theme-pink .score-value { color: #fff; }
+
+        .controls {
+            display: flex;
+            gap: 8px;
+            margin-top: 10px;
+        }
+
+        .btn {
+            padding: 8px 16px;
+            border-radius: 8px;
+            font-size: 14px;
             font-weight: bold;
             cursor: pointer;
+            border: none;
             transition: all 0.3s ease;
+        }
+
+        .theme-dark .btn {
+            background: linear-gradient(135deg, #ff6b6b, #ff9ff3);
+            color: #fff;
             box-shadow: 0 4px 15px rgba(255, 107, 107, 0.4);
         }
 
-        .new-game-btn:hover {
+        .theme-dark .btn:hover {
             transform: translateY(-2px);
             box-shadow: 0 6px 20px rgba(255, 107, 107, 0.6);
         }
 
+        .theme-light .btn {
+            background: linear-gradient(135deg, #8f7a66, #9f8b77);
+            color: #fff;
+        }
+
+        .theme-light .btn:hover {
+            background: linear-gradient(135deg, #9f8b77, #af9b87);
+        }
+
+        .theme-pink .btn {
+            background: linear-gradient(135deg, #ff69b4, #ff1493);
+            color: #fff;
+        }
+
+        .theme-pink .btn:hover {
+            background: linear-gradient(135deg, #ff85c0, #ff69b4);
+        }
+
+        .btn-icon {
+            padding: 8px;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+        }
+
         .game-board {
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(20px);
             border-radius: 16px;
             padding: 15px;
             display: grid;
@@ -100,21 +187,51 @@
             gap: 8px;
             aspect-ratio: 1;
             touch-action: none;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .theme-dark .game-board {
+            background: rgba(255, 255, 255, 0.05);
             border: 1px solid rgba(255, 255, 255, 0.1);
             box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.1);
         }
 
+        .theme-light .game-board {
+            background: #bbada0;
+            border: 1px solid #a39489;
+        }
+
+        .theme-pink .game-board {
+            background: #ffb6c1;
+            border: 1px solid #ff69b4;
+        }
+
         .cell {
-            background: rgba(255, 255, 255, 0.05);
             border-radius: 12px;
             display: flex;
             justify-content: center;
             align-items: center;
             font-size: 36px;
             font-weight: bold;
-            color: rgba(255, 255, 255, 0.3);
             position: relative;
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .theme-dark .cell {
+            background: rgba(255, 255, 255, 0.05);
+            color: rgba(255, 255, 255, 0.3);
+        }
+
+        .theme-light .cell {
+            background: rgba(238, 228, 218, 0.35);
+            color: #776e65;
+        }
+
+        .theme-pink .cell {
+            background: rgba(255, 182, 193, 0.4);
+            color: #ff69b4;
         }
 
         .tile {
@@ -126,21 +243,50 @@
             align-items: center;
             font-weight: bold;
             transition: all 0.15s ease;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
         }
 
-        .tile-2 { background: linear-gradient(135deg, #a8e6cf, #88d8b0); color: #1a1a2e; font-size: 36px; }
-        .tile-4 { background: linear-gradient(135deg, #ffd3a5, #ffb347); color: #1a1a2e; font-size: 36px; }
-        .tile-8 { background: linear-gradient(135deg, #ff6b6b, #ee5a5a); color: #fff; font-size: 36px; }
-        .tile-16 { background: linear-gradient(135deg, #ff9ff3, #f368e0); color: #fff; font-size: 36px; }
-        .tile-32 { background: linear-gradient(135deg, #54a0ff, #2e86de); color: #fff; font-size: 36px; }
-        .tile-64 { background: linear-gradient(135deg, #5f27cd, #4834a7); color: #fff; font-size: 36px; }
-        .tile-128 { background: linear-gradient(135deg, #00d2d3, #0abde3); color: #fff; font-size: 30px; box-shadow: 0 0 20px rgba(0, 210, 211, 0.5); }
-        .tile-256 { background: linear-gradient(135deg, #ff9f43, #ee5a24); color: #fff; font-size: 30px; box-shadow: 0 0 20px rgba(255, 159, 67, 0.5); }
-        .tile-512 { background: linear-gradient(135deg, #ff6b6b, #c44569); color: #fff; font-size: 30px; box-shadow: 0 0 20px rgba(255, 107, 107, 0.5); }
-        .tile-1024 { background: linear-gradient(135deg, #a29bfe, #6c5ce7); color: #fff; font-size: 24px; box-shadow: 0 0 25px rgba(162, 155, 254, 0.6); }
-        .tile-2048 { background: linear-gradient(135deg, #feca57, #ff9f43); color: #fff; font-size: 24px; box-shadow: 0 0 30px rgba(254, 202, 87, 0.8); }
-        .tile-super { background: linear-gradient(135deg, #1dd1a1, #10ac84); color: #fff; font-size: 20px; box-shadow: 0 0 30px rgba(29, 209, 161, 0.8); }
+        .theme-dark .tile { box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); }
+        .theme-light .tile { box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); }
+        .theme-pink .tile { box-shadow: 0 2px 8px rgba(255, 105, 180, 0.3); }
+
+        .theme-dark .tile-2 { background: linear-gradient(135deg, #a8e6cf, #88d8b0); color: #1a1a2e; font-size: 36px; }
+        .theme-dark .tile-4 { background: linear-gradient(135deg, #ffd3a5, #ffb347); color: #1a1a2e; font-size: 36px; }
+        .theme-dark .tile-8 { background: linear-gradient(135deg, #ff6b6b, #ee5a5a); color: #fff; font-size: 36px; }
+        .theme-dark .tile-16 { background: linear-gradient(135deg, #ff9ff3, #f368e0); color: #fff; font-size: 36px; }
+        .theme-dark .tile-32 { background: linear-gradient(135deg, #54a0ff, #2e86de); color: #fff; font-size: 36px; }
+        .theme-dark .tile-64 { background: linear-gradient(135deg, #5f27cd, #4834a7); color: #fff; font-size: 36px; }
+        .theme-dark .tile-128 { background: linear-gradient(135deg, #00d2d3, #0abde3); color: #fff; font-size: 30px; box-shadow: 0 0 20px rgba(0, 210, 211, 0.5); }
+        .theme-dark .tile-256 { background: linear-gradient(135deg, #ff9f43, #ee5a24); color: #fff; font-size: 30px; box-shadow: 0 0 20px rgba(255, 159, 67, 0.5); }
+        .theme-dark .tile-512 { background: linear-gradient(135deg, #ff6b6b, #c44569); color: #fff; font-size: 30px; box-shadow: 0 0 20px rgba(255, 107, 107, 0.5); }
+        .theme-dark .tile-1024 { background: linear-gradient(135deg, #a29bfe, #6c5ce7); color: #fff; font-size: 24px; box-shadow: 0 0 25px rgba(162, 155, 254, 0.6); }
+        .theme-dark .tile-2048 { background: linear-gradient(135deg, #feca57, #ff9f43); color: #fff; font-size: 24px; box-shadow: 0 0 30px rgba(254, 202, 87, 0.8); }
+        .theme-dark .tile-super { background: linear-gradient(135deg, #1dd1a1, #10ac84); color: #fff; font-size: 20px; box-shadow: 0 0 30px rgba(29, 209, 161, 0.8); }
+
+        .theme-light .tile-2 { background: #eee4da; color: #776e65; font-size: 36px; }
+        .theme-light .tile-4 { background: #ede0c8; color: #776e65; font-size: 36px; }
+        .theme-light .tile-8 { background: #f2b179; color: #f9f6f2; font-size: 36px; }
+        .theme-light .tile-16 { background: #f59563; color: #f9f6f2; font-size: 36px; }
+        .theme-light .tile-32 { background: #f67c5f; color: #f9f6f2; font-size: 36px; }
+        .theme-light .tile-64 { background: #f65e3b; color: #f9f6f2; font-size: 36px; }
+        .theme-light .tile-128 { background: #edcf72; color: #f9f6f2; font-size: 30px; }
+        .theme-light .tile-256 { background: #edcc61; color: #f9f6f2; font-size: 30px; }
+        .theme-light .tile-512 { background: #edc850; color: #f9f6f2; font-size: 30px; }
+        .theme-light .tile-1024 { background: #edc53f; color: #f9f6f2; font-size: 24px; }
+        .theme-light .tile-2048 { background: #edc22e; color: #f9f6f2; font-size: 24px; }
+        .theme-light .tile-super { background: #3c3a32; color: #f9f6f2; font-size: 20px; }
+
+        .theme-pink .tile-2 { background: #ffe4e9; color: #d87093; font-size: 36px; }
+        .theme-pink .tile-4 { background: #ffcdd2; color: #d87093; font-size: 36px; }
+        .theme-pink .tile-8 { background: #ffb6c1; color: #fff; font-size: 36px; }
+        .theme-pink .tile-16 { background: #ff91a4; color: #fff; font-size: 36px; }
+        .theme-pink .tile-32 { background: #ff6b8a; color: #fff; font-size: 36px; }
+        .theme-pink .tile-64 { background: #ff476f; color: #fff; font-size: 36px; }
+        .theme-pink .tile-128 { background: #ff145a; color: #fff; font-size: 30px; box-shadow: 0 0 20px rgba(255, 20, 90, 0.5); }
+        .theme-pink .tile-256 { background: #e6004c; color: #fff; font-size: 30px; box-shadow: 0 0 20px rgba(230, 0, 76, 0.5); }
+        .theme-pink .tile-512 { background: #c20042; color: #fff; font-size: 30px; box-shadow: 0 0 20px rgba(194, 0, 66, 0.5); }
+        .theme-pink .tile-1024 { background: #9e0038; color: #fff; font-size: 24px; box-shadow: 0 0 25px rgba(158, 0, 56, 0.6); }
+        .theme-pink .tile-2048 { background: #7a002e; color: #fff; font-size: 24px; box-shadow: 0 0 30px rgba(122, 0, 46, 0.8); }
+        .theme-pink .tile-super { background: #560024; color: #fff; font-size: 20px; box-shadow: 0 0 30px rgba(86, 0, 36, 0.8); }
 
         .game-message {
             position: absolute;
@@ -148,7 +294,6 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: rgba(0, 0, 0, 0.8);
             backdrop-filter: blur(10px);
             display: flex;
             flex-direction: column;
@@ -159,6 +304,10 @@
             animation: fadeIn 0.3s ease;
         }
 
+        .theme-dark .game-message { background: rgba(0, 0, 0, 0.8); }
+        .theme-light .game-message { background: rgba(238, 228, 218, 0.9); }
+        .theme-pink .game-message { background: rgba(255, 182, 193, 0.9); }
+
         @keyframes fadeIn {
             from { opacity: 0; }
             to { opacity: 1; }
@@ -167,77 +316,307 @@
         .game-message-title {
             font-size: 48px;
             font-weight: bold;
+            margin-bottom: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .theme-dark .game-message-title {
             background: linear-gradient(135deg, #ff6b6b, #feca57);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            margin-bottom: 20px;
         }
+
+        .theme-light .game-message-title { color: #776e65; }
+        .theme-pink .game-message-title { color: #ff1493; }
 
         .game-message-subtitle {
             font-size: 24px;
-            color: rgba(255, 255, 255, 0.8);
             margin-bottom: 20px;
+            transition: color 0.3s ease;
         }
 
+        .theme-dark .game-message-subtitle { color: rgba(255, 255, 255, 0.8); }
+        .theme-light .game-message-subtitle { color: #776e65; }
+        .theme-pink .game-message-subtitle { color: #db7093; }
+
         .game-message button {
-            background: linear-gradient(135deg, #ff6b6b, #ff9ff3);
-            color: #fff;
-            border: none;
             padding: 12px 40px;
             border-radius: 12px;
             font-size: 18px;
             font-weight: bold;
             cursor: pointer;
+            border: none;
             transition: all 0.3s ease;
+        }
+
+        .theme-dark .game-message button {
+            background: linear-gradient(135deg, #ff6b6b, #ff9ff3);
+            color: #fff;
             box-shadow: 0 4px 15px rgba(255, 107, 107, 0.4);
         }
 
-        .game-message button:hover {
+        .theme-dark .game-message button:hover {
             transform: translateY(-2px);
             box-shadow: 0 6px 20px rgba(255, 107, 107, 0.6);
         }
 
-        .game-message.won {
-            background: rgba(254, 202, 87, 0.2);
+        .theme-light .game-message button {
+            background: #8f7a66;
+            color: #fff;
         }
 
-        .game-message.won .game-message-title {
+        .theme-light .game-message button:hover { background: #9f8b77; }
+
+        .theme-pink .game-message button {
+            background: linear-gradient(135deg, #ff69b4, #ff1493);
+            color: #fff;
+        }
+
+        .theme-pink .game-message button:hover {
+            background: linear-gradient(135deg, #ff85c0, #ff69b4);
+        }
+
+        .game-message.won {
+            transition: all 0.3s ease;
+        }
+
+        .theme-dark .game-message.won { background: rgba(254, 202, 87, 0.2); }
+        .theme-light .game-message.won { background: rgba(237, 204, 46, 0.8); }
+        .theme-pink .game-message.won { background: rgba(255, 105, 180, 0.9); }
+
+        .theme-dark .game-message.won .game-message-title {
             background: linear-gradient(135deg, #feca57, #ff9f43);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
         }
 
-        .game-message.won .game-message-subtitle {
-            color: #fff;
+        .theme-light .game-message.won .game-message-title { color: #fff; }
+        .theme-pink .game-message.won .game-message-title { color: #fff; }
+
+        .theme-dark .game-message.won .game-message-subtitle { color: #fff; }
+        .theme-light .game-message.won .game-message-subtitle { color: #fff; }
+        .theme-pink .game-message.won .game-message-subtitle { color: #fff; }
+
+        .settings-panel {
+            position: fixed;
+            top: 0;
+            right: -300px;
+            width: 300px;
+            height: 100%;
+            padding: 20px;
+            z-index: 200;
+            transition: right 0.3s ease;
+            overflow-y: auto;
+        }
+
+        .settings-panel.open { right: 0; }
+
+        .theme-dark .settings-panel {
+            background: rgba(26, 26, 46, 0.95);
+            border-left: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .theme-light .settings-panel {
+            background: rgba(250, 248, 239, 0.98);
+            border-left: 1px solid #bbada0;
+        }
+
+        .theme-pink .settings-panel {
+            background: rgba(255, 240, 245, 0.98);
+            border-left: 1px solid #ffb6c1;
+        }
+
+        .settings-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid;
+        }
+
+        .theme-dark .settings-header { border-color: rgba(255, 255, 255, 0.1); }
+        .theme-light .settings-header { border-color: #bbada0; }
+        .theme-pink .settings-header { border-color: #ffb6c1; }
+
+        .settings-title {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .theme-dark .settings-title { color: #fff; }
+        .theme-light .settings-title { color: #776e65; }
+        .theme-pink .settings-title { color: #ff1493; }
+
+        .close-btn {
+            font-size: 24px;
+            cursor: pointer;
+            background: none;
+            border: none;
+            padding: 0;
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .theme-dark .close-btn { color: rgba(255, 255, 255, 0.6); }
+        .theme-light .close-btn { color: #776e65; }
+        .theme-pink .close-btn { color: #ff69b4; }
+
+        .close-btn:hover { transform: rotate(90deg); }
+
+        .settings-section {
+            margin-bottom: 25px;
+        }
+
+        .settings-label {
+            font-size: 14px;
+            font-weight: bold;
+            margin-bottom: 10px;
+            display: block;
+            text-transform: uppercase;
+        }
+
+        .theme-dark .settings-label { color: rgba(255, 255, 255, 0.8); }
+        .theme-light .settings-label { color: #776e65; }
+        .theme-pink .settings-label { color: #db7093; }
+
+        .theme-options {
+            display: flex;
+            gap: 10px;
+        }
+
+        .theme-option {
+            width: 50px;
+            height: 50px;
+            border-radius: 10px;
+            cursor: pointer;
+            border: 3px solid transparent;
+            transition: all 0.3s ease;
+        }
+
+        .theme-option:hover { transform: scale(1.1); }
+        .theme-option.active { border-color: #fff; box-shadow: 0 0 10px rgba(255, 255, 255, 0.5); }
+
+        .theme-dark .theme-option.active { border-color: #fff; }
+        .theme-light .theme-option.active { border-color: #776e65; }
+        .theme-pink .theme-option.active { border-color: #ff69b4; }
+
+        .theme-option-dark { background: linear-gradient(135deg, #1a1a2e, #16213e, #0f3460); }
+        .theme-option-light { background: linear-gradient(135deg, #faf8ef, #f2e8cf, #ede0c8); }
+        .theme-option-pink { background: linear-gradient(135deg, #fff0f5, #ffe4e9, #ffcdd2); }
+
+        .toggle-switch {
+            position: relative;
+            width: 60px;
+            height: 34px;
+            cursor: pointer;
+        }
+
+        .toggle-switch input { display: none; }
+
+        .toggle-slider {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            border-radius: 34px;
+            transition: all 0.3s ease;
+        }
+
+        .theme-dark .toggle-slider { background: rgba(255, 255, 255, 0.2); }
+        .theme-light .toggle-slider { background: #bbada0; }
+        .theme-pink .toggle-slider { background: #ffb6c1; }
+
+        .toggle-slider::before {
+            position: absolute;
+            content: '';
+            height: 26px;
+            width: 26px;
+            left: 4px;
+            bottom: 4px;
+            border-radius: 50%;
+            transition: all 0.3s ease;
+        }
+
+        .theme-dark .toggle-slider::before { background: #fff; }
+        .theme-light .toggle-slider::before { background: #fff; }
+        .theme-pink .toggle-slider::before { background: #fff; }
+
+        .toggle-switch input:checked + .toggle-slider {
+            background: linear-gradient(135deg, #ff6b6b, #ff9ff3);
+        }
+
+        .toggle-switch input:checked + .toggle-slider::before {
+            transform: translateX(26px);
+        }
+
+        .toggle-label {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 150;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .overlay.show {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .moves-box {
+            font-size: 14px;
+            font-weight: bold;
+            padding: 10px 15px;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .theme-dark .moves-box {
+            background: rgba(255, 255, 255, 0.08);
+            color: rgba(255, 255, 255, 0.8);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .theme-light .moves-box {
+            background: #eee4da;
+            color: #776e65;
+            border: 1px solid #bbada0;
+        }
+
+        .theme-pink .moves-box {
+            background: rgba(255, 182, 193, 0.6);
+            color: #db7093;
+            border: 1px solid #ffb6c1;
         }
 
         @media (max-width: 480px) {
-            .title {
-                font-size: 40px;
-            }
-
-            .game-board {
-                padding: 10px;
-                gap: 6px;
-            }
-
-            .tile-2, .tile-4, .tile-8, .tile-16, .tile-32, .tile-64 {
-                font-size: 28px;
-            }
-
-            .tile-128, .tile-256, .tile-512 {
-                font-size: 24px;
-            }
-
-            .tile-1024, .tile-2048 {
-                font-size: 18px;
-            }
+            .title { font-size: 40px; }
+            .game-board { padding: 10px; gap: 6px; }
+            .tile-2, .tile-4, .tile-8, .tile-16, .tile-32, .tile-64 { font-size: 28px; }
+            .tile-128, .tile-256, .tile-512 { font-size: 24px; }
+            .tile-1024, .tile-2048 { font-size: 18px; }
+            .controls { flex-wrap: wrap; }
         }
     </style>
 </head>
-<body>
+<body class="theme-dark">
     <div class="container">
         <div class="header">
             <div class="title">2048</div>
@@ -250,10 +629,42 @@
                     <div class="score-label">最高分</div>
                     <div class="score-value" id="best">0</div>
                 </div>
-                <button class="new-game-btn" id="new-game">新游戏</button>
             </div>
         </div>
+        <div class="moves-box" id="moves">步数: 0</div>
+        <div class="controls">
+            <button class="btn" id="new-game">新游戏</button>
+            <button class="btn btn-icon" id="undo" title="撤销">↩</button>
+            <button class="btn btn-icon" id="sound-toggle" title="音效">🔊</button>
+            <button class="btn btn-icon" id="settings-btn" title="设置">⚙</button>
+        </div>
         <div class="game-board" id="game-board"></div>
+    </div>
+
+    <div class="overlay" id="overlay"></div>
+    <div class="settings-panel" id="settings-panel">
+        <div class="settings-header">
+            <div class="settings-title">设置</div>
+            <button class="close-btn" id="close-settings">&times;</button>
+        </div>
+        <div class="settings-section">
+            <div class="settings-label">主题</div>
+            <div class="theme-options">
+                <div class="theme-option theme-option-dark active" data-theme="dark" title="深色"></div>
+                <div class="theme-option theme-option-light" data-theme="light" title="浅色"></div>
+                <div class="theme-option theme-option-pink" data-theme="pink" title="粉色"></div>
+            </div>
+        </div>
+        <div class="settings-section">
+            <div class="settings-label">音效</div>
+            <label class="toggle-label">
+                <span>开启音效</span>
+                <label class="toggle-switch">
+                    <input type="checkbox" id="sound-checkbox" checked>
+                    <span class="toggle-slider"></span>
+                </label>
+            </label>
+        </div>
     </div>
 
     <script>
@@ -261,31 +672,135 @@
         let grid = [];
         let score = 0;
         let bestScore = 0;
+        let moves = 0;
         let gameOver = false;
         let won = false;
         let canContinue = true;
+        let soundEnabled = true;
+        let currentTheme = 'dark';
+        let history = [];
 
         const gameBoard = document.getElementById('game-board');
         const scoreDisplay = document.getElementById('score');
         const bestDisplay = document.getElementById('best');
+        const movesDisplay = document.getElementById('moves');
         const newGameBtn = document.getElementById('new-game');
+        const undoBtn = document.getElementById('undo');
+        const soundToggleBtn = document.getElementById('sound-toggle');
+        const settingsBtn = document.getElementById('settings-btn');
+        const settingsPanel = document.getElementById('settings-panel');
+        const overlay = document.getElementById('overlay');
+        const closeSettingsBtn = document.getElementById('close-settings');
+        const soundCheckbox = document.getElementById('sound-checkbox');
+        const themeOptions = document.querySelectorAll('.theme-option');
 
         let startX = 0;
         let startY = 0;
 
+        const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+
+        function playSound(type) {
+            if (!soundEnabled) return;
+            if (audioContext.state === 'suspended') audioContext.resume();
+            
+            const oscillator = audioContext.createOscillator();
+            const gainNode = audioContext.createGain();
+            
+            oscillator.connect(gainNode);
+            gainNode.connect(audioContext.destination);
+            
+            switch (type) {
+                case 'move':
+                    oscillator.frequency.setValueAtTime(300, audioContext.currentTime);
+                    oscillator.frequency.exponentialRampToValueAtTime(200, audioContext.currentTime + 0.1);
+                    gainNode.gain.setValueAtTime(0.1, audioContext.currentTime);
+                    gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 0.1);
+                    oscillator.start();
+                    oscillator.stop(audioContext.currentTime + 0.1);
+                    break;
+                case 'merge':
+                    oscillator.frequency.setValueAtTime(400, audioContext.currentTime);
+                    oscillator.frequency.exponentialRampToValueAtTime(800, audioContext.currentTime + 0.15);
+                    gainNode.gain.setValueAtTime(0.15, audioContext.currentTime);
+                    gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 0.15);
+                    oscillator.start();
+                    oscillator.stop(audioContext.currentTime + 0.15);
+                    break;
+                case 'win':
+                    oscillator.frequency.setValueAtTime(523, audioContext.currentTime);
+                    oscillator.frequency.setValueAtTime(659, audioContext.currentTime + 0.1);
+                    oscillator.frequency.setValueAtTime(784, audioContext.currentTime + 0.2);
+                    oscillator.frequency.setValueAtTime(1047, audioContext.currentTime + 0.3);
+                    gainNode.gain.setValueAtTime(0.2, audioContext.currentTime);
+                    gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 0.5);
+                    oscillator.start();
+                    oscillator.stop(audioContext.currentTime + 0.5);
+                    break;
+            }
+        }
+
+        function saveState() {
+            history.push({
+                grid: grid.map(row => [...row]),
+                score: score,
+                moves: moves,
+                won: won,
+                canContinue: canContinue
+            });
+            if (history.length > 10) history.shift();
+        }
+
+        function undo() {
+            if (history.length === 0) return;
+            const prevState = history.pop();
+            grid = prevState.grid;
+            score = prevState.score;
+            moves = prevState.moves;
+            won = prevState.won;
+            canContinue = prevState.canContinue;
+            gameOver = false;
+            updateScore();
+            updateMoves();
+            render();
+        }
+
+        function setTheme(theme) {
+            document.body.classList.remove('theme-dark', 'theme-light', 'theme-pink');
+            document.body.classList.add(`theme-${theme}`);
+            currentTheme = theme;
+            themeOptions.forEach(opt => opt.classList.remove('active'));
+            document.querySelector(`[data-theme="${theme}"]`).classList.add('active');
+            localStorage.setItem('gameTheme', theme);
+        }
+
+        function toggleSound() {
+            soundEnabled = !soundEnabled;
+            soundCheckbox.checked = soundEnabled;
+            soundToggleBtn.textContent = soundEnabled ? '🔊' : '🔇';
+            localStorage.setItem('soundEnabled', soundEnabled);
+        }
+
+        function updateMoves() {
+            movesDisplay.textContent = `步数: ${moves}`;
+        }
+
         function init() {
             grid = Array(gridSize).fill(null).map(() => Array(gridSize).fill(0));
             score = 0;
+            moves = 0;
             gameOver = false;
             won = false;
             canContinue = true;
+            history = [];
             
             addTile(2);
             addTile(2);
             addTile(2);
             
             updateScore();
+            updateMoves();
             render();
+            localStorage.removeItem('gameState');
         }
 
         function addTile(value) {
@@ -297,7 +812,6 @@
                     }
                 }
             }
-            
             if (emptyCells.length > 0) {
                 const randomCell = emptyCells[Math.floor(Math.random() * emptyCells.length)];
                 grid[randomCell.row][randomCell.col] = value;
@@ -319,21 +833,58 @@
             bestDisplay.textContent = bestScore;
         }
 
+        function saveGame() {
+            const gameState = {
+                grid: grid,
+                score: score,
+                moves: moves,
+                gameOver: gameOver,
+                won: won,
+                canContinue: canContinue,
+                savedAt: Date.now()
+            };
+            localStorage.setItem('gameState', JSON.stringify(gameState));
+        }
+
+        function loadGame() {
+            const saved = localStorage.getItem('gameState');
+            if (saved) {
+                try {
+                    const gameState = JSON.parse(saved);
+                    if (!gameState.grid || !Array.isArray(gameState.grid) || 
+                        gameState.grid.length !== gridSize || 
+                        !gameState.grid.every(row => Array.isArray(row) && row.length === gridSize)) {
+                        return false;
+                    }
+                    grid = gameState.grid;
+                    score = gameState.score;
+                    moves = gameState.moves || 0;
+                    gameOver = gameState.gameOver;
+                    won = gameState.won;
+                    canContinue = gameState.canContinue !== undefined ? gameState.canContinue : true;
+                    updateScore();
+                    updateMoves();
+                    render();
+                    return true;
+                } catch (e) {
+                    return false;
+                }
+            }
+            return false;
+        }
+
         function render() {
             gameBoard.innerHTML = '';
-            
             for (let i = 0; i < gridSize; i++) {
                 for (let j = 0; j < gridSize; j++) {
                     const cell = document.createElement('div');
                     cell.className = 'cell';
-                    
                     if (grid[i][j] !== 0) {
                         const tile = document.createElement('div');
                         tile.className = `tile tile-${Math.min(grid[i][j], 2048)}${grid[i][j] > 2048 ? ' tile-super' : ''}`;
                         tile.textContent = grid[i][j];
                         cell.appendChild(tile);
                     }
-                    
                     gameBoard.appendChild(cell);
                 }
             }
@@ -353,7 +904,7 @@
                 message.innerHTML = `
                     <div class="game-message-title">你赢了!</div>
                     <div class="game-message-subtitle">得分: ${score}</div>
-                    <button onclick="canContinue = true; render()">继续游戏</button>
+                    <button onclick="canContinue = true; render(); saveGame();">继续游戏</button>
                 `;
                 gameBoard.appendChild(message);
             }
@@ -362,24 +913,27 @@
         function move(direction) {
             if (gameOver || (won && !canContinue)) return;
             
+            saveState();
+            
             const oldGrid = JSON.stringify(grid);
             
-            if (direction === 'left') {
-                moveLeft();
-            } else if (direction === 'up') {
-                moveUp();
-            } else if (direction === 'right') {
-                moveRight();
-            } else if (direction === 'down') {
-                moveDown();
-            }
+            if (direction === 'left') moveLeft();
+            else if (direction === 'up') moveUp();
+            else if (direction === 'right') moveRight();
+            else if (direction === 'down') moveDown();
             
             const newGrid = JSON.stringify(grid);
             if (oldGrid !== newGrid) {
+                moves++;
+                playSound('move');
                 addRandomTile();
                 updateScore();
+                updateMoves();
                 checkGameOver();
                 render();
+                saveGame();
+            } else {
+                history.pop();
             }
         }
 
@@ -387,25 +941,22 @@
             for (let i = 0; i < gridSize; i++) {
                 let row = grid[i].filter(val => val !== 0);
                 let mergedRow = [];
-                
                 for (let j = 0; j < row.length; j++) {
                     if (j + 1 < row.length && row[j] === row[j + 1]) {
                         const val = row[j] * 2;
                         mergedRow.push(val);
                         score += val;
+                        playSound('merge');
                         if (val === 2048 && !won) {
                             won = true;
+                            playSound('win');
                         }
                         j++;
                     } else {
                         mergedRow.push(row[j]);
                     }
                 }
-                
-                while (mergedRow.length < gridSize) {
-                    mergedRow.push(0);
-                }
-                
+                while (mergedRow.length < gridSize) mergedRow.push(0);
                 grid[i] = mergedRow;
             }
         }
@@ -414,25 +965,22 @@
             for (let i = 0; i < gridSize; i++) {
                 let row = grid[i].filter(val => val !== 0);
                 let mergedRow = [];
-                
                 for (let j = row.length - 1; j >= 0; j--) {
                     if (j - 1 >= 0 && row[j] === row[j - 1]) {
                         const val = row[j] * 2;
                         mergedRow.unshift(val);
                         score += val;
+                        playSound('merge');
                         if (val === 2048 && !won) {
                             won = true;
+                            playSound('win');
                         }
                         j--;
                     } else {
                         mergedRow.unshift(row[j]);
                     }
                 }
-                
-                while (mergedRow.length < gridSize) {
-                    mergedRow.unshift(0);
-                }
-                
+                while (mergedRow.length < gridSize) mergedRow.unshift(0);
                 grid[i] = mergedRow;
             }
         }
@@ -441,33 +989,26 @@
             for (let j = 0; j < gridSize; j++) {
                 let col = [];
                 for (let i = 0; i < gridSize; i++) {
-                    if (grid[i][j] !== 0) {
-                        col.push(grid[i][j]);
-                    }
+                    if (grid[i][j] !== 0) col.push(grid[i][j]);
                 }
-                
                 let mergedCol = [];
                 for (let i = 0; i < col.length; i++) {
                     if (i + 1 < col.length && col[i] === col[i + 1]) {
                         const val = col[i] * 2;
                         mergedCol.push(val);
                         score += val;
+                        playSound('merge');
                         if (val === 2048 && !won) {
                             won = true;
+                            playSound('win');
                         }
                         i++;
                     } else {
                         mergedCol.push(col[i]);
                     }
                 }
-                
-                while (mergedCol.length < gridSize) {
-                    mergedCol.push(0);
-                }
-                
-                for (let i = 0; i < gridSize; i++) {
-                    grid[i][j] = mergedCol[i];
-                }
+                while (mergedCol.length < gridSize) mergedCol.push(0);
+                for (let i = 0; i < gridSize; i++) grid[i][j] = mergedCol[i];
             }
         }
 
@@ -475,33 +1016,26 @@
             for (let j = 0; j < gridSize; j++) {
                 let col = [];
                 for (let i = 0; i < gridSize; i++) {
-                    if (grid[i][j] !== 0) {
-                        col.push(grid[i][j]);
-                    }
+                    if (grid[i][j] !== 0) col.push(grid[i][j]);
                 }
-                
                 let mergedCol = [];
                 for (let i = col.length - 1; i >= 0; i--) {
                     if (i - 1 >= 0 && col[i] === col[i - 1]) {
                         const val = col[i] * 2;
                         mergedCol.unshift(val);
                         score += val;
+                        playSound('merge');
                         if (val === 2048 && !won) {
                             won = true;
+                            playSound('win');
                         }
                         i--;
                     } else {
                         mergedCol.unshift(col[i]);
                     }
                 }
-                
-                while (mergedCol.length < gridSize) {
-                    mergedCol.unshift(0);
-                }
-                
-                for (let i = 0; i < gridSize; i++) {
-                    grid[i][j] = mergedCol[i];
-                }
+                while (mergedCol.length < gridSize) mergedCol.unshift(0);
+                for (let i = 0; i < gridSize; i++) grid[i][j] = mergedCol[i];
             }
         }
 
@@ -518,21 +1052,16 @@
 
         document.addEventListener('keydown', (e) => {
             switch (e.key) {
-                case 'ArrowUp':
-                    e.preventDefault();
-                    move('up');
-                    break;
-                case 'ArrowDown':
-                    e.preventDefault();
-                    move('down');
-                    break;
-                case 'ArrowLeft':
-                    e.preventDefault();
-                    move('left');
-                    break;
-                case 'ArrowRight':
-                    e.preventDefault();
-                    move('right');
+                case 'ArrowUp': e.preventDefault(); move('up'); break;
+                case 'ArrowDown': e.preventDefault(); move('down'); break;
+                case 'ArrowLeft': e.preventDefault(); move('left'); break;
+                case 'ArrowRight': e.preventDefault(); move('right'); break;
+                case 'z':
+                case 'Z':
+                    if (e.ctrlKey || e.metaKey) {
+                        e.preventDefault();
+                        undo();
+                    }
                     break;
             }
         });
@@ -546,11 +1075,9 @@
         gameBoard.addEventListener('touchend', (e) => {
             const endX = e.changedTouches[0].clientX;
             const endY = e.changedTouches[0].clientY;
-            
             const deltaX = endX - startX;
             const deltaY = endY - startY;
             const minDrag = 30;
-            
             if (Math.abs(deltaX) >= minDrag || Math.abs(deltaY) >= minDrag) {
                 if (Math.abs(deltaX) > Math.abs(deltaY)) {
                     move(deltaX > 0 ? 'right' : 'left');
@@ -568,11 +1095,9 @@
         document.addEventListener('mouseup', (e) => {
             const endX = e.clientX;
             const endY = e.clientY;
-            
             const deltaX = endX - startX;
             const deltaY = endY - startY;
             const minDrag = 30;
-            
             if (Math.abs(deltaX) >= minDrag || Math.abs(deltaY) >= minDrag) {
                 if (Math.abs(deltaX) > Math.abs(deltaY)) {
                     move(deltaX > 0 ? 'right' : 'left');
@@ -583,13 +1108,40 @@
         });
 
         newGameBtn.addEventListener('click', init);
+        undoBtn.addEventListener('click', undo);
+        soundToggleBtn.addEventListener('click', toggleSound);
+        settingsBtn.addEventListener('click', () => {
+            settingsPanel.classList.add('open');
+            overlay.classList.add('show');
+        });
+        closeSettingsBtn.addEventListener('click', () => {
+            settingsPanel.classList.remove('open');
+            overlay.classList.remove('show');
+        });
+        overlay.addEventListener('click', () => {
+            settingsPanel.classList.remove('open');
+            overlay.classList.remove('show');
+        });
+        soundCheckbox.addEventListener('change', toggleSound);
+        themeOptions.forEach(opt => {
+            opt.addEventListener('click', () => setTheme(opt.dataset.theme));
+        });
 
         const savedBest = localStorage.getItem('bestScore');
-        if (savedBest) {
-            bestScore = parseInt(savedBest);
+        if (savedBest) bestScore = parseInt(savedBest);
+
+        const savedTheme = localStorage.getItem('gameTheme');
+        if (savedTheme) setTheme(savedTheme);
+
+        const savedSound = localStorage.getItem('soundEnabled');
+        if (savedSound !== null) {
+            soundEnabled = savedSound === 'true';
+            soundCheckbox.checked = soundEnabled;
+            soundToggleBtn.textContent = soundEnabled ? '🔊' : '🔇';
         }
 
-        init();
+        const hasSavedGame = loadGame();
+        if (!hasSavedGame) init();
     </script>
 </body>
 </html>
